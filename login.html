@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type='text'],
+        input[type='password'] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type='submit'] {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type='submit']:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action='/login' method='post'>
+        <label for='username'>Username:</label>
+        <input type='text' id='username' name='username' required>
+        <br>
+        <label for='password'>Password:</label>
+        <input type='password' id='password' name='password' required>
+        <br>
+        <input type='submit' value='Login'>
+        <input type='button' value='Forgot Password?' onclick="window.location.href='forgot.html'">
+    </form>
+    <script>
+        function showMessage(message) {
+            alert(message);
+        }
+        function sendOTP() {
+            // Simulate sending OTP
+            showMessage("OTP sent to your email.");
+            startCountdown();
+        }
+        function startCountdown() {
+            let countdownElement = document.getElementById("countdown");
+            let timeLeft = 60;
+            let timer = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    countdownElement.innerHTML = "Time's up!";
+                } else {
+                    countdownElement.innerHTML = timeLeft + " seconds remaining";
+                }
+                timeLeft -= 1;
+            }, 1000);
+        }
+        function searchCollege() {
+            let input = document.getElementById("searchInput").value;
+            if (input) {
+                alert("Searching for colleges related to: " + input);
+            } else {
+                alert("Please enter a college name to search.");
+            }
+        }
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            alert("Login successful!");
+            window.location.href = 'index.html'; // Redirect to home page
+        });
+    </script>
+    <button onclick="window.location.href='register.html'">Don't have an account? Register</button>
+</body>
+</html>
